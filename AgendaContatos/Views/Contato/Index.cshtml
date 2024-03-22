@@ -1,0 +1,45 @@
+@model List<ContatoModel>
+@{
+    ViewData["Title"] = "Listagem de Contatos";
+}
+
+<div class="text-center">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class="btn btn-primary" role="button" asp-controller="Contato" asp-action="Cadastrar">Novo contato</a>
+    </div>
+    <br>
+
+    <h1 class="display-4">Listagem de Contatos</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="text-align: right;" scope="col">#</th>
+                <th style="text-align: left;" scope="col">Nome</th>
+                <th style="text-align: left;" scope="col">E-mail</th>
+                <th style="text-align: center;"scope="col">Celular</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (ContatoModel contato in Model)
+                {
+                    <tr>
+                        <th  style="text-align: right;" scope="row">@contato.Id</th>
+                        <td style="text-align: left;">@contato.Nome</td>
+                        <td style="text-align: left;">@contato.Email</td>
+                        <td style="text-align: right;">@contato.Telefone</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a role="button" class="btn btn-primary" asp-controller="Contato" asp-action="Editar" asp-route-id="@contato.Id">Editar</a>
+                                <a role="button" class="btn btn-danger" asp-controller="Contato" asp-action="DeletarRegistro" asp-route-id="@contato.Id">Excluir</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
