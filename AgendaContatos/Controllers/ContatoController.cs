@@ -10,9 +10,9 @@ namespace AgendaContatos.Controllers
 
         public ContatoController(IContatoRepositorio contatoRepositorio)
         {
-            _contatoRepositorio = contatoRepositorio;            
+            _contatoRepositorio = contatoRepositorio;
         }
-        
+
         public IActionResult Index()
         {
             List<ContatoModel> contatos = _contatoRepositorio.BuscarTodos();
@@ -33,12 +33,30 @@ namespace AgendaContatos.Controllers
 
         public IActionResult Excluir(int id)
         {
-            _contatoRepositorio.Excluir(id);
-            return RedirectToAction("Index");
+            try
+            {
+                bool excluido = _contatoRepositorio.Excluir(id);
+
+                if(excluido)
+                {
+                    TempData["MensagemSucesso"] = "Contato excluído com sucesso!";
+                }
+                else
+                {
+                    TempData["MensagemErro"] = "Erro ao excluír contato";
+                }
+
+                return RedirectToAction("Index");
+            }
+            catch (System.Exception erro)
+            {
+                TempData["MensagemErro"] = $"Erro ao excluir contato: {erro.Message}";
+                return RedirectToAction("Index");
+            }
         }
 
         public IActionResult Editar(int id)
-        {            
+        {
             ContatoModel contato = _contatoRepositorio.ListarPorId(id);
             return View(contato);
         }
@@ -46,15 +64,43 @@ namespace AgendaContatos.Controllers
         [HttpPost]
         public IActionResult Cadastrar(ContatoModel contato)
         {
-            _contatoRepositorio.Adicionar(contato);
-            return RedirectToAction("Index");
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _contatoRepositorio.Adicionar(contato);
+                    TempData["MensagemSucesso"] = "Contato cadastrado com sucesso";
+                    return RedirectToAction("Index");
+                }
+
+                return View(contato);
+            }
+            catch (System.Exception erro)
+            {
+                TempData["MensagemErro"] = $"Erro ao cadastraro contato: {erro.Message}";
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpPost]
         public IActionResult Editar(ContatoModel contato)
         {
-            _contatoRepositorio.Editar(contato);
-            return RedirectToAction("Index");
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _contatoRepositorio.Editar(contato);
+                    TempData["MensagemSucesso"] = "Contato atualizado com sucesso";
+                    return RedirectToAction("Index");
+                }
+
+                return View(contato);
+            }
+            catch (System.Exception erro)
+            {
+                TempData["MensagemErro"] = $"Erro ao atualizar o contato: {erro.Message} ";
+                throw;
+            }
         }
     }
 }
