@@ -4204,24 +4204,26 @@
     ]
   },
   "packageFolders": {
-    "/Users/oberdanmarinho/.nuget/packages/": {}
+    "C:\\Users\\oberd\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/oberdanmarinho/Development/Studies/Youtube/AgendaContatos/AgendaContatos.csproj",
+      "projectUniqueName": "D:\\Studies\\Youtube.AgendaContatos\\AgendaContatos\\AgendaContatos.csproj",
       "projectName": "AgendaContatos",
-      "projectPath": "/Users/oberdanmarinho/Development/Studies/Youtube/AgendaContatos/AgendaContatos.csproj",
-      "packagesPath": "/Users/oberdanmarinho/.nuget/packages/",
-      "outputPath": "/Users/oberdanmarinho/Development/Studies/Youtube/AgendaContatos/obj/",
+      "projectPath": "D:\\Studies\\Youtube.AgendaContatos\\AgendaContatos\\AgendaContatos.csproj",
+      "packagesPath": "C:\\Users\\oberd\\.nuget\\packages\\",
+      "outputPath": "D:\\Studies\\Youtube.AgendaContatos\\AgendaContatos\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/oberdanmarinho/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\oberd\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -4285,7 +4287,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

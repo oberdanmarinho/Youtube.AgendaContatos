@@ -25,6 +25,12 @@ namespace AgendaContatos.Controllers
 			return View();
 		}
 
+		public IActionResult Editar(int id)
+		{
+			ContatoModel contato = _contatoRepositorio.ListarPorId(id);
+			return View(contato);
+		}
+
 		public IActionResult DeletarRegistro(int id)
 		{
 			ContatoModel contato = _contatoRepositorio.ListarPorId(id);
@@ -53,12 +59,6 @@ namespace AgendaContatos.Controllers
 				TempData["MensagemErro"] = $"Erro ao excluir contato: {erro.Message}";
 				return RedirectToAction("Index");
 			}
-		}
-
-		public IActionResult Editar(int id)
-		{
-			ContatoModel contato = _contatoRepositorio.ListarPorId(id);
-			return View(contato);
 		}
 
 		[HttpPost]

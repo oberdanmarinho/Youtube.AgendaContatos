@@ -4,8 +4,8 @@ namespace AgendaContatos.Repositorio
 {
     public interface IContatoRepositorio
     {
-        ContatoModel ListarPorId(int id);
         List<ContatoModel> BuscarTodos();
+        ContatoModel ListarPorId(int id);
         ContatoModel Adicionar(ContatoModel contato);
         ContatoModel Editar(ContatoModel contato);
         bool Excluir(int id);
