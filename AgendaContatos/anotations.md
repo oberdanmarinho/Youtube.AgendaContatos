@@ -11,8 +11,9 @@ Aula 04 - https://www.youtube.com/watch?v=8muJg7SXZdo&list=PLJ0IKu7KZpCQKdwRbU7H
 Aula 05 - https://www.youtube.com/watch?v=HWDqpsEDJiw&list=PLJ0IKu7KZpCQKdwRbU7HfXW3raImmghWZ&index=5 Concluúdo
 Aula 06 - https://www.youtube.com/watch?v=gfZkMG-jGqM&list=PLJ0IKu7KZpCQKdwRbU7HfXW3raImmghWZ&index=6 Concluído
 Aula 07 - https://www.youtube.com/watch?v=MnS_89y7CyU&list=PLJ0IKu7KZpCQKdwRbU7HfXW3raImmghWZ&index=7 Concluído
-Aula 08 - https://www.youtube.com/watch?v=m4lLWh_MUKI&list=PLJ0IKu7KZpCQKdwRbU7HfXW3raImmghWZ&index=9 Concluído
-Aula 09 - https://www.youtube.com/watch?v=LpxSdgLU5zo&list=PLJ0IKu7KZpCQKdwRbU7HfXW3raImmghWZ&index=9
+Aula 08 - https://www.youtube.com/watch?v=m4lLWh_MUKI&list=PLJ0IKu7KZpCQKdwRbU7HfXW3raImmghWZ&index=8 Concluído
+Aula 09 - https://www.youtube.com/watch?v=LpxSdgLU5zo&list=PLJ0IKu7KZpCQKdwRbU7HfXW3raImmghWZ&index=9 Concluído
+Aula 10 - 
 
 
 

@@ -1,7 +1,6 @@
 using AgendaContatos.Models;
 using AgendaContatos.Repositorio;
 using Microsoft.AspNetCore.Mvc;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace AgendaContatos.Controllers
 {
@@ -9,13 +8,25 @@ namespace AgendaContatos.Controllers
 	{
 		public IActionResult Index()
 		{
+			// se o usuÃ£rio estiver logado, redirecionar para a Home
+			if(_sessao.BuscarSessaoUsuario() != null) return RedirectToAction("Index", "Home");
+			
 			return View();
 		}
 		private readonly IUsuarioRepositorio _usuarioRepositorio;
+		private readonly ISessao _sessao;
 
-		public LoginController(IUsuarioRepositorio usuarioRepositorio)
+		public LoginController(IUsuarioRepositorio usuarioRepositorio, ISessao sessao)
 		{
 			_usuarioRepositorio = usuarioRepositorio;
+		 	_sessao = sessao;
+		}
+
+		public IActionResult Sair()
+		{
+			_sessao.RemoverSessaoUsuario();
+
+			return RedirectToAction("Index", "Login");
 		}
 
 		[HttpPost]
@@ -31,20 +42,22 @@ namespace AgendaContatos.Controllers
 					{
 						if(usuario.SenhaValida(loginModel.Senha))
 						{
+							_sessao.CiarSessaoUsuarUsuario(usuario);
 							return RedirectToAction("Index", "Home");
 						}
 
-						TempData["MensagemErro"] = $"Usuário e/ou senha invalido(s). Por favor, tente novamente.";
+						
+						TempData["MensagemErro"] = $"UsuÃ¡rio e/ou senha invalido(s). Por favor, tente novamente.";
 					}
 
-					TempData["MensagemErro"] = $"Usuário e/ou senha invalido(s). Por favor, tente novamente.";
+					TempData["MensagemErro"] = $"UsuÃ¡rio e/ou senha invalido(s). Por favor, tente novamente.";
 				}
 
 				return View("Index");
 			}
 			catch (Exception erro)
 			{
-				TempData["MensagemErro"] = $"Nâo foi possível realizar login. Tente novamente! {erro.Message}";
+				TempData["MensagemErro"] = $"NÃ£o foi possï¿½vel realizar login. Tente novamente! {erro.Message}";
 				return RedirectToAction("Index");
 			}
 		}
