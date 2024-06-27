@@ -1,28 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Studies\\Programador Tech\\Youtube.AgendaContatos\\AgendaContatos\\AgendaContatos.csproj": {}
+    "/Users/oberdanmarinho/Development/Studies/Programador Tech/Youtube.AgendaContatos/AgendaContatos/AgendaContatos.csproj": {}
   },
   "projects": {
-    "D:\\Studies\\Programador Tech\\Youtube.AgendaContatos\\AgendaContatos\\AgendaContatos.csproj": {
+    "/Users/oberdanmarinho/Development/Studies/Programador Tech/Youtube.AgendaContatos/AgendaContatos/AgendaContatos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Studies\\Programador Tech\\Youtube.AgendaContatos\\AgendaContatos\\AgendaContatos.csproj",
+        "projectUniqueName": "/Users/oberdanmarinho/Development/Studies/Programador Tech/Youtube.AgendaContatos/AgendaContatos/AgendaContatos.csproj",
         "projectName": "AgendaContatos",
-        "projectPath": "D:\\Studies\\Programador Tech\\Youtube.AgendaContatos\\AgendaContatos\\AgendaContatos.csproj",
-        "packagesPath": "C:\\Users\\oberd\\.nuget\\packages\\",
-        "outputPath": "D:\\Studies\\Programador Tech\\Youtube.AgendaContatos\\AgendaContatos\\obj\\",
+        "projectPath": "/Users/oberdanmarinho/Development/Studies/Programador Tech/Youtube.AgendaContatos/AgendaContatos/AgendaContatos.csproj",
+        "packagesPath": "/Users/oberdanmarinho/.nuget/packages/",
+        "outputPath": "/Users/oberdanmarinho/Development/Studies/Programador Tech/Youtube.AgendaContatos/AgendaContatos/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\oberd\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/oberdanmarinho/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -90,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
