@@ -13,7 +13,8 @@ Aula 06 - https://www.youtube.com/watch?v=gfZkMG-jGqM&list=PLJ0IKu7KZpCQKdwRbU7H
 Aula 07 - https://www.youtube.com/watch?v=MnS_89y7CyU&list=PLJ0IKu7KZpCQKdwRbU7HfXW3raImmghWZ&index=7 Concluído
 Aula 08 - https://www.youtube.com/watch?v=m4lLWh_MUKI&list=PLJ0IKu7KZpCQKdwRbU7HfXW3raImmghWZ&index=8 Concluído
 Aula 09 - https://www.youtube.com/watch?v=LpxSdgLU5zo&list=PLJ0IKu7KZpCQKdwRbU7HfXW3raImmghWZ&index=9 Concluído
-Aula 10 - 
+Aula 10 - https://www.youtube.com/watch?v=FWaQAKsbcnQ&list=PLJ0IKu7KZpCQKdwRbU7HfXW3raImmghWZ&index=10 Concluído
+
 
 
 
