@@ -1,9 +1,11 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using AgendaContatos.Models;
+using AgendaContatos.Filters;
 
 namespace AgendaContatos.Controllers;
 
+[PaginaParaUsuarioLogado]
 public class HomeController : Controller
 {
     public IActionResult Index()

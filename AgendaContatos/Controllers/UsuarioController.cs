@@ -1,8 +1,11 @@
-﻿using AgendaContatos.Models;
+﻿using AgendaContatos.Filters;
+using AgendaContatos.Models;
 using AgendaContatos.Repositorio;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AgendaContatos.Controllers;
+
+[PaginaRestritaSomenteAdmin]
 public class UsuarioController : Controller
 {
 	private readonly IUsuarioRepositorio _usuarioRepositorio;
@@ -26,7 +29,7 @@ public class UsuarioController : Controller
 
 	public IActionResult Editar(int id)
 	{
-		UsuarioModel usuario = _usuarioRepositorio.ListarPorId(id); 
+		UsuarioModel usuario = _usuarioRepositorio.ListarPorId(id);
 		return View(usuario);
 	}
 
@@ -61,7 +64,7 @@ public class UsuarioController : Controller
 	}
 
 	[HttpPost]
-	public IActionResult Cadastrar(UsuarioModel usuario	)
+	public IActionResult Cadastrar(UsuarioModel usuario)
 	{
 		try
 		{
@@ -88,7 +91,7 @@ public class UsuarioController : Controller
 		try
 		{
 			UsuarioModel usuario = null;
-			
+
 			if (ModelState.IsValid)
 			{
 				usuario = new UsuarioModel()

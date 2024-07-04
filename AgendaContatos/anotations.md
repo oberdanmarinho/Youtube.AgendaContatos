@@ -16,7 +16,7 @@ Aula 06 (ok)
 Aula 07 (ok)
 Aula 08 (ok)
 Aula 09 (ok)
-Aula 10
+Aula 10 (ok)
 Aula 11
 
 

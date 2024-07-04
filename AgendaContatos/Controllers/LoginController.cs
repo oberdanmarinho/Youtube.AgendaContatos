@@ -2,64 +2,63 @@ using AgendaContatos.Models;
 using AgendaContatos.Repositorio;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AgendaContatos.Controllers
+namespace AgendaContatos.Controllers;
+
+public class LoginController : Controller
 {
-	public class LoginController : Controller
+	public IActionResult Index()
 	{
-		public IActionResult Index()
-		{
-			// se o usuãrio estiver logado, redirecionar para a Home
-			if(_sessao.BuscarSessaoUsuario() != null) return RedirectToAction("Index", "Home");
-			
-			return View();
-		}
-		private readonly IUsuarioRepositorio _usuarioRepositorio;
-		private readonly ISessao _sessao;
+		// se o usuãrio estiver logado, redirecionar para a Home
+		if (_sessao.BuscarSessaoUsuario() != null) return RedirectToAction("Index", "Home");
 
-		public LoginController(IUsuarioRepositorio usuarioRepositorio, ISessao sessao)
-		{
-			_usuarioRepositorio = usuarioRepositorio;
-		 	_sessao = sessao;
-		}
+		return View();
+	}
+	private readonly IUsuarioRepositorio _usuarioRepositorio;
+	private readonly ISessao _sessao;
 
-		public IActionResult Sair()
-		{
-			_sessao.RemoverSessaoUsuario();
+	public LoginController(IUsuarioRepositorio usuarioRepositorio, ISessao sessao)
+	{
+		_usuarioRepositorio = usuarioRepositorio;
+		_sessao = sessao;
+	}
 
-			return RedirectToAction("Index", "Login");
-		}
+	public IActionResult Sair()
+	{
+		_sessao.RemoverSessaoUsuario();
 
-		[HttpPost]
-		public IActionResult Entrar(LoginModel loginModel)
+		return RedirectToAction("Index", "Login");
+	}
+
+	[HttpPost]
+	public IActionResult Entrar(LoginModel loginModel)
+	{
+		try
 		{
-			try
+			if (ModelState.IsValid)
 			{
-				if (ModelState.IsValid)
+				UsuarioModel usuario = _usuarioRepositorio.BuscarPorLogin(loginModel.Login);
+
+				if (usuario != null)
 				{
-					UsuarioModel usuario = _usuarioRepositorio.BuscarPorLogin(loginModel.Login);
-
-					if (usuario != null)
+					if (usuario.SenhaValida(loginModel.Senha))
 					{
-						if(usuario.SenhaValida(loginModel.Senha))
-						{
-							_sessao.CiarSessaoUsuarUsuario(usuario);
-							return RedirectToAction("Index", "Home");
-						}
-
-						
-						TempData["MensagemErro"] = $"Usuário e/ou senha invalido(s). Por favor, tente novamente.";
+						_sessao.CiarSessaoUsuarUsuario(usuario);
+						return RedirectToAction("Index", "Home");
 					}
+
 
 					TempData["MensagemErro"] = $"Usuário e/ou senha invalido(s). Por favor, tente novamente.";
 				}
 
-				return View("Index");
+				TempData["MensagemErro"] = $"Usuário e/ou senha invalido(s). Por favor, tente novamente.";
 			}
-			catch (Exception erro)
-			{
-				TempData["MensagemErro"] = $"Não foi poss�vel realizar login. Tente novamente! {erro.Message}";
-				return RedirectToAction("Index");
-			}
+
+			return View("Index");
+		}
+		catch (Exception erro)
+		{
+			TempData["MensagemErro"] = $"Não foi poss�vel realizar login. Tente novamente! {erro.Message}";
+			return RedirectToAction("Index");
 		}
 	}
 }
