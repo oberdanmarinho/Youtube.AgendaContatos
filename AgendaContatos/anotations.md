@@ -18,6 +18,6 @@ Aula 08 (ok)
 Aula 09 (ok)
 Aula 10 (ok)
 Aula 11 (ok)
-Aula 12 (ok)
+Aula 12 (ok) (24/07/2024)
 
 
