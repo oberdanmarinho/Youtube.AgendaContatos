@@ -21,7 +21,7 @@ namespace AgendaContatos.Controllers
 			return JsonConvert.DeserializeObject<UsuarioModel>(sessaoUsuario);
 		}
 
-		public void CiarSessaoUsuarUsuario(UsuarioModel usuario)
+		public void CriarSessaoUsuarUsuario(UsuarioModel usuario)
 		{
 			string valor = JsonConvert.SerializeObject(usuario);
 			_httpContext.HttpContext.Session.SetString("sessaoUsuarioLogado", valor);

@@ -18,6 +18,6 @@ Aula 08 (ok)
 Aula 09 (ok)
 Aula 10 (ok)
 Aula 11 (ok)
-Aula 12 
+Aula 12 (ok)
 
 

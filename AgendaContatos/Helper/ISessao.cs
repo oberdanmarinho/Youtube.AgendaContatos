@@ -4,7 +4,7 @@ namespace AgendaContatos.Controllers
 {
 	public interface ISessao
 	{
-		void CiarSessaoUsuarUsuario(UsuarioModel usuario);
+		void CriarSessaoUsuarUsuario(UsuarioModel usuario);
 		void RemoverSessaoUsuario();
 		UsuarioModel BuscarSessaoUsuario();
 	}

@@ -18,6 +18,11 @@ namespace AgendaContatos.Repositorio
 			return _context.Usuarios.FirstOrDefault(x => x.Login.ToUpper() == login.ToUpper());
 		}
 
+        public UsuarioModel BuscarPorEmailLogin(string email, string login)
+        {
+			return _context.Usuarios.FirstOrDefault(x => x.Email.ToUpper() == email.ToUpper() && x.Login.ToUpper() == login.ToUpper());
+        }
+
 		public UsuarioModel ListarPorId(int id)
 		{
 			return _context.Usuarios.FirstOrDefault(x => x.Id == id);
@@ -67,5 +72,6 @@ namespace AgendaContatos.Repositorio
 
 			return true;
 		}
-	}
+
+    }
 }
