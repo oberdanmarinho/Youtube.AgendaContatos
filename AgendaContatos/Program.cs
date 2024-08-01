@@ -1,5 +1,6 @@
 using AgendaContatos.Controllers;
 using AgendaContatos.Data;
+using AgendaContatos.Helper;
 using AgendaContatos.Repositorio;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,7 @@ builder.Services.AddDbContext<BancoContent>(o => o.UseSqlServer("name=Connection
 builder.Services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
 builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 builder.Services.AddScoped<ISessao, Sessao>();
+builder.Services.AddScoped<IEmail, Email>();
 
 builder.Services.AddSession(o => {
     o.Cookie.HttpOnly = true;
