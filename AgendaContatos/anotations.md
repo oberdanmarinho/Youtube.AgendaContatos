@@ -5,7 +5,7 @@ Connection String
         },
 
 
-URL Curso: https://www.youtube.com/watch?v=-v0sfER0po8&list=PLJ0IKu7KZpCQKdwRbU7HfXW3raImmghWZ&index=14
+URL Curso: https://www.youtube.com/watch?v=GzbAUKz7EN4&list=PLJ0IKu7KZpCQKdwRbU7HfXW3raImmghWZ&index=15
 
 Aula 01 (ok)
 Aula 02 (ok)
@@ -19,6 +19,7 @@ Aula 09 (ok)
 Aula 10 (ok)
 Aula 11 (ok)
 Aula 12 (ok) (24/07/2024)
-Aula 13 (ok) (01082024) [HP]
+Aula 13 (ok) (01/08/2024) [HP Commit]
+Aula 14 (ok) (09/08/2024) [HP Commit]
 
 
