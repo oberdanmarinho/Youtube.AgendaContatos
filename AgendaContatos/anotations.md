@@ -5,7 +5,7 @@ Connection String
         },
 
 
-URL Curso: https://www.youtube.com/watch?v=-v0sfER0po8&list=PLJ0IKu7KZpCQKdwRbU7HfXW3raImmghWZ&index=1
+URL Curso: https://www.youtube.com/watch?v=-v0sfER0po8&list=PLJ0IKu7KZpCQKdwRbU7HfXW3raImmghWZ&index=14
 
 Aula 01 (ok)
 Aula 02 (ok)

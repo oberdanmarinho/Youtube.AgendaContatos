@@ -11,6 +11,7 @@ namespace AgendaContatos.Repositorio
 		UsuarioModel ListarPorId(int id);
 		UsuarioModel Adicionar(UsuarioModel usuario);
 		UsuarioModel Editar(UsuarioModel usuario);
+		UsuarioModel AlterarSenha (AlterarSenhaModel alterarSenhaModel);
 		bool Excluir(int id);
 	}
 }
