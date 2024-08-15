@@ -21,5 +21,6 @@ Aula 11 (ok)
 Aula 12 (ok) (24/07/2024)
 Aula 13 (ok) (01/08/2024) [HP Commit]
 Aula 14 (ok) (09/08/2024) [HP Commit]
+Aula 15 (ok) (15/08/2023) [Mac Commit]
 
 
