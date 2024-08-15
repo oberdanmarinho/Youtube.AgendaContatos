@@ -89,7 +89,7 @@ yarn-error.log
 .env
 
 # Entity Framework
-migrations/
+#migrations/
 
 # Rider
 .idea/
