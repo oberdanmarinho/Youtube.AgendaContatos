@@ -9,15 +9,18 @@ namespace AgendaContatos.Controllers;
 public class ContatoController : Controller
 {
 	private readonly IContatoRepositorio _contatoRepositorio;
+	private readonly ISessao _sessao;
 
-	public ContatoController(IContatoRepositorio contatoRepositorio)
+	public ContatoController(IContatoRepositorio contatoRepositorio, ISessao sessao)
 	{
 		_contatoRepositorio = contatoRepositorio;
+		_sessao = sessao;
 	}
 
 	public IActionResult Index()
 	{
-		List<ContatoModel> contatos = _contatoRepositorio.BuscarTodos();
+		UsuarioModel usuarioLogado = _sessao.BuscarSessaoUsuario();
+		List<ContatoModel> contatos = _contatoRepositorio.BuscarTodos(usuarioLogado.Id);
 
 		return View(contatos);
 	}
@@ -70,6 +73,9 @@ public class ContatoController : Controller
 		{
 			if (ModelState.IsValid)
 			{
+				UsuarioModel usuarioLogado = _sessao.BuscarSessaoUsuario();
+				contato.UsuarioId = usuarioLogado.Id;
+
 				_contatoRepositorio.Adicionar(contato);
 				TempData["MensagemSucesso"] = "Contato cadastrado com sucesso";
 				return RedirectToAction("Index");
@@ -91,6 +97,9 @@ public class ContatoController : Controller
 		{
 			if (ModelState.IsValid)
 			{
+				UsuarioModel usuarioLogado = _sessao.BuscarSessaoUsuario();
+				contato.UsuarioId = usuarioLogado.Id;
+
 				_contatoRepositorio.Editar(contato);
 				TempData["MensagemSucesso"] = "Contato atualizado com sucesso";
 				return RedirectToAction("Index");

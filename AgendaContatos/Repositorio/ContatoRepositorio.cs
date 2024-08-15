@@ -17,10 +17,10 @@ namespace AgendaContatos.Repositorio
         {
             return _context.Contatos.FirstOrDefault(x => x.Id == id);
         }
-        
-        public List<ContatoModel> BuscarTodos()
+
+        public List<ContatoModel> BuscarTodos(int usuarioId)
         {
-            return _context.Contatos.ToList();
+            return _context.Contatos.Where(x => x.UsuarioId == usuarioId).ToList();
         }
 
         public ContatoModel Adicionar(ContatoModel contato)
@@ -35,7 +35,7 @@ namespace AgendaContatos.Repositorio
         {
             ContatoModel contatoDB = ListarPorId(contato.Id);
 
-            if(contatoDB == null) throw new System.Exception("Houve um erro na atualização do contato.");
+            if (contatoDB == null) throw new System.Exception("Houve um erro na atualização do contato.");
 
             contatoDB.Nome = contato.Nome;
             contatoDB.Email = contato.Email;
@@ -51,7 +51,7 @@ namespace AgendaContatos.Repositorio
         {
             ContatoModel contatoDB = ListarPorId(id);
 
-            if(contatoDB == null) throw new System.Exception("Houve um erro ao deletar o contato.");
+            if (contatoDB == null) throw new System.Exception("Houve um erro ao deletar o contato.");
 
             _context.Contatos.Remove(contatoDB);
             _context.SaveChanges();

@@ -27,6 +27,8 @@ public class UsuarioModel
     public DateTime DataCadastro { get; set; }
     public DateTime? DataAtualizacao { get; set; }
 
+    public virtual List<ContatoModel> Contatos { get; set; }
+
     public bool SenhaValida(string senha)
     {
         return Senha == senha.GerarHash();
@@ -41,7 +43,7 @@ public class UsuarioModel
     {
         Senha = novaSenha.GerarHash();
     }
-    
+
     public string GerarNovaSenha()
     {
         string novaSenha = Guid.NewGuid().ToString().Substring(0, 8);
