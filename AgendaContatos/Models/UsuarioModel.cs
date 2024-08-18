@@ -8,14 +8,14 @@ public class UsuarioModel
 {
     public int Id { get; set; }
 
-    [Required(ErrorMessage = "Digite o nome do usuário")]
+    [Required(ErrorMessage = "O nome é obrigatório.")]
     public string Nome { get; set; }
 
-    [Required(ErrorMessage = "Digite o login do usuário")]
+    [Required(ErrorMessage = "O login é obrigatório.")]
     public string Login { get; set; }
 
-    [Required(ErrorMessage = "Digite o e-mail do usuãrio")]
-    [EmailAddress(ErrorMessage = "O e-mail informádo não é válido!")]
+    [Required(ErrorMessage = "O email é obrigatório.")]
+    [EmailAddress(ErrorMessage = "O email não é válido.")]
     public string Email { get; set; }
 
     [Required(ErrorMessage = "Informe o perfil do usuário!")]

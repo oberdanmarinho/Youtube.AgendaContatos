@@ -1,29 +1,31 @@
 @using AgendaContatos.Enums
 @model UsuarioModel
 @{
-  ViewData["Title"] = "Novo usu�rio";
+  ViewData["Title"] = "Novo usuário";
 }
 
 <div class="text-center">
-  <div class="display-4">Novo usu�rio</div>
+  <div class="display-4">Novo usuário</div>
 </div>
 
-<form asp-controller="Usuario" asp-action="Cadastrar" method="post">  
+<form asp-controller="Usuario" asp-action="Cadastrar" method="post">
+
+
   <div class="form-group">
     <label for="nome" class="form-label">Nome</label>
-    <input type="text" asp-for="Nome" class="form-control" placeholder="Digite o nome do usu�rio">
+    <input type="text" asp-for="Nome" class="form-control" placeholder="Digite o nome do usuário">
     @Html.ValidationMessageFor(x => x.Nome)
   </div>
 
   <div class="form-group">
     <label for="nome" class="form-label">E-mail</label>
-    <input type="text" asp-for="Email" class="form-control" placeholder="Digite o e-mail do usu�rio">
+    <input type="text" asp-for="Email" class="form-control" placeholder="Digite o e-mail do usuário">
     @Html.ValidationMessageFor(x => x.Email)
   </div>
 
   <div class="form-group">
     <label for="nome" class="form-label">Login</label>
-    <input type="text" asp-for="Login" class="form-control" placeholder="Digite o login do usu�rio">
+    <input type="text" asp-for="Login" class="form-control" placeholder="Digite o login do usuário">
     @Html.ValidationMessageFor(x => x.Login)
   </div>
 
@@ -39,9 +41,11 @@
 
   <div class="form-group">
     <label for="nome" class="form-label">Senha</label>
-    <input type="password" asp-for="Senha" class="form-control" placeholder="Digite a senha do usu�rio">
+    <input type="password" asp-for="Senha" class="form-control" placeholder="Digite a senha do usuário">
     @Html.ValidationMessageFor(x => x.Senha)
   </div>
+
+
 
   <button type="submit" class="btn btn-primary btn-block">Gravar</button>
   <a class="btn btn-secondary btn-block" asp-controller="Usuario" asp-action="Index" role="button">Cancelar</a>

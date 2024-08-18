@@ -8,12 +8,23 @@ namespace AgendaContatos.Controllers;
 [PaginaRestritaSomenteAdmin]
 public class UsuarioController : Controller
 {
+
+
+
+
+
 	private readonly IUsuarioRepositorio _usuarioRepositorio;
 
 	public UsuarioController(IUsuarioRepositorio usuarioRepositorio)
 	{
 		_usuarioRepositorio = usuarioRepositorio;
 	}
+
+
+
+
+
+
 
 	public IActionResult Index()
 	{
@@ -63,6 +74,33 @@ public class UsuarioController : Controller
 		}
 	}
 
+
+
+	// [HttpPost]
+	// public IActionResult Cadastrar(UsuarioModel usuario)
+	// {
+	// 	try
+	// 	{
+	// 		if (ModelState.IsValid)
+	// 		{
+	// 			usuario = _usuarioRepositorio.Adicionar(usuario);
+
+	// 			TempData["MensagemSucesso"] = "Usuário cadastrado com sucesso";
+	// 			return RedirectToAction("Index");
+	// 		}
+
+	// 		return View(usuario);
+	// 	}
+	// 	catch (System.Exception erro)
+	// 	{
+	// 		TempData["MensagemErro"] = $"Erro ao cadastraro usuário: {erro.Message}";
+	// 		return RedirectToAction("Index");
+	// 	}
+	// }
+
+
+
+
 	[HttpPost]
 	public IActionResult Cadastrar(UsuarioModel usuario)
 	{
@@ -70,20 +108,33 @@ public class UsuarioController : Controller
 		{
 			if (ModelState.IsValid)
 			{
-				_usuarioRepositorio.Adicionar(usuario);
-
+				usuario = _usuarioRepositorio.Adicionar(usuario);
 				TempData["MensagemSucesso"] = "Usuário cadastrado com sucesso";
 				return RedirectToAction("Index");
+			}
+
+			// Se o ModelState não for válido, exiba os erros
+			var erros = ModelState.Values.SelectMany(v => v.Errors);
+			foreach (var erro in erros)
+			{
+				// Adicione erros ao TempData para exibir na view
+				TempData["MensagemErro"] = erro.ErrorMessage;
 			}
 
 			return View(usuario);
 		}
 		catch (System.Exception erro)
 		{
-			TempData["MensagemErro"] = $"Erro ao cadastraro usuário: {erro.Message}";
+			TempData["MensagemErro"] = $"Erro ao cadastrar o usuário: {erro.Message}";
 			return RedirectToAction("Index");
 		}
 	}
+
+
+
+
+
+
 
 	[HttpPost]
 	public IActionResult Editar(UsuarioSemSenhaModel usuarioSemSenhaModel)

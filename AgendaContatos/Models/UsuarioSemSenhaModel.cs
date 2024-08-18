@@ -13,10 +13,10 @@ public class UsuarioSemSenhaModel
   [Required(ErrorMessage = "Digite o login do usuário")]
   public string Login { get; set; }
 
-  [Required(ErrorMessage = "Digite o e-mail do usuãrio")]
+  [Required(ErrorMessage = "Digite o e-mail do usuário")]
   [EmailAddress(ErrorMessage = "O e-mail informádo não é válido!")]
   public string Email { get; set; }
 
-  [Required(ErrorMessage ="Informe o perfil do usuário!")]
+  [Required(ErrorMessage = "Informe o perfil do usuário!")]
   public PerfilEnum? Perfil { get; set; }
 }
