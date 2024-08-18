@@ -8,23 +8,12 @@ namespace AgendaContatos.Controllers;
 [PaginaRestritaSomenteAdmin]
 public class UsuarioController : Controller
 {
-
-
-
-
-
 	private readonly IUsuarioRepositorio _usuarioRepositorio;
 
 	public UsuarioController(IUsuarioRepositorio usuarioRepositorio)
 	{
 		_usuarioRepositorio = usuarioRepositorio;
 	}
-
-
-
-
-
-
 
 	public IActionResult Index()
 	{
@@ -74,8 +63,6 @@ public class UsuarioController : Controller
 		}
 	}
 
-
-
 	// [HttpPost]
 	// public IActionResult Cadastrar(UsuarioModel usuario)
 	// {
@@ -98,9 +85,6 @@ public class UsuarioController : Controller
 	// 	}
 	// }
 
-
-
-
 	[HttpPost]
 	public IActionResult Cadastrar(UsuarioModel usuario)
 	{
@@ -115,6 +99,7 @@ public class UsuarioController : Controller
 
 			// Se o ModelState não for válido, exiba os erros
 			var erros = ModelState.Values.SelectMany(v => v.Errors);
+
 			foreach (var erro in erros)
 			{
 				// Adicione erros ao TempData para exibir na view
@@ -129,12 +114,6 @@ public class UsuarioController : Controller
 			return RedirectToAction("Index");
 		}
 	}
-
-
-
-
-
-
 
 	[HttpPost]
 	public IActionResult Editar(UsuarioSemSenhaModel usuarioSemSenhaModel)
