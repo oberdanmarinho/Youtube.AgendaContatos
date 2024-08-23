@@ -63,28 +63,6 @@ public class UsuarioController : Controller
 		}
 	}
 
-	// [HttpPost]
-	// public IActionResult Cadastrar(UsuarioModel usuario)
-	// {
-	// 	try
-	// 	{
-	// 		if (ModelState.IsValid)
-	// 		{
-	// 			usuario = _usuarioRepositorio.Adicionar(usuario);
-
-	// 			TempData["MensagemSucesso"] = "Usuário cadastrado com sucesso";
-	// 			return RedirectToAction("Index");
-	// 		}
-
-	// 		return View(usuario);
-	// 	}
-	// 	catch (System.Exception erro)
-	// 	{
-	// 		TempData["MensagemErro"] = $"Erro ao cadastraro usuário: {erro.Message}";
-	// 		return RedirectToAction("Index");
-	// 	}
-	// }
-
 	[HttpPost]
 	public IActionResult Cadastrar(UsuarioModel usuario)
 	{
