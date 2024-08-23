@@ -1,6 +1,7 @@
 ﻿using AgendaContatos.Enums;
 using AgendaContatos.Helper;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace AgendaContatos.Models;
 
@@ -27,6 +28,8 @@ public class UsuarioModel
     public DateTime DataCadastro { get; set; }
 
     public DateTime? DataAtualizacao { get; set; }
+
+    public virtual List<ContatoModel> Contatos { get; set; }
 
     public bool SenhaValida(string senha)
     {

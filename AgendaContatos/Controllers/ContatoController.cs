@@ -76,7 +76,8 @@ public class ContatoController : Controller
 				UsuarioModel usuarioLogado = _sessao.BuscarSessaoUsuario();
 				contato.UsuarioId = usuarioLogado.Id;
 
-				_contatoRepositorio.Adicionar(contato);
+				contato = _contatoRepositorio.Adicionar(contato);
+
 				TempData["MensagemSucesso"] = "Contato cadastrado com sucesso";
 				return RedirectToAction("Index");
 			}
@@ -100,7 +101,7 @@ public class ContatoController : Controller
 				UsuarioModel usuarioLogado = _sessao.BuscarSessaoUsuario();
 				contato.UsuarioId = usuarioLogado.Id;
 
-				_contatoRepositorio.Editar(contato);
+				contato = _contatoRepositorio.Editar(contato);
 				TempData["MensagemSucesso"] = "Contato atualizado com sucesso";
 				return RedirectToAction("Index");
 			}
