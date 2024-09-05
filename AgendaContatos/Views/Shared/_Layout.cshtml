@@ -36,7 +36,13 @@
 	<script src="https://cdn.datatables.net/v/dt/dt-2.0.3/datatables.min.js"></script>
 	<script src="~/js/site.js" asp-append-version="true"></script>
 
-	@await RenderSectionAsync("Scripts", required: false)
+	<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"></script>
+	<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+	<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate.unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+
+@* 	@await RenderSectionAsync("Scripts", required: false)
+ *@	@RenderSection("Scripts", required: false)
+
 </body>
 
 </html>

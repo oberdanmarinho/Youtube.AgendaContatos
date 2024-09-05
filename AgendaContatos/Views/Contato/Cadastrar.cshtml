@@ -3,6 +3,10 @@
   ViewData["Title"] = "Novo contato";
 }
 
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
 <div class="text-center">
   <div class="display-4">Novo contato</div>
 </div>
@@ -25,6 +29,8 @@
     <input type="text" asp-for="Telefone" class="form-control" placeholder="Digite o telefone do contato">
     @Html.ValidationMessageFor(x => x.Telefone)
   </div>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
 
   <button type="submit" class="btn btn-primary btn-block">Gravar</button>
   <a class="btn btn-secondary btn-block" asp-controller="Contato" asp-action="Index" role="button">Cancelar</a>
