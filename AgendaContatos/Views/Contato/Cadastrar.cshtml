@@ -1,37 +1,38 @@
 @model ContatoModel
+
 @{
-  ViewData["Title"] = "Novo contato";
+    ViewData["Title"] = "Novo Contato";
 }
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
 
-<div class="text-center">
-  <div class="display-4">Novo contato</div>
+<div class="text-center mb-4">
+    <h2>Novo Contato</h2>
 </div>
 
-<form asp-controller="Contato" asp-action="Cadastrar" method="post">  
-  <div class="form-group">
-    <label for="nome">Nome</label>
-    <input type="text" asp-for="Nome" class="form-control" placeholder="Digite o nome do contato">
-    @Html.ValidationMessageFor(x => x.Nome)
-  </div>
+<form asp-controller="Contato" asp-action="Cadastrar" method="post">
+    @Html.HiddenFor(model => model.UsuarioId)
 
-  <div class="form-group">
-    <label for="email">E-mail</label>
-    <input type="text" asp-for="Email" class="form-control" placeholder="Digite o e-mail do contato">
-    @Html.ValidationMessageFor(x => x.Email)
-  </div>
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" asp-for="Nome" class="form-control" placeholder="Digite o nome do contato" />
+        @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+    </div>
 
-  <div class="form-group">
-    <label for="telefone">Telefone</label>
-    <input type="text" asp-for="Telefone" class="form-control" placeholder="Digite o telefone do contato">
-    @Html.ValidationMessageFor(x => x.Telefone)
-  </div>
+    <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" asp-for="Email" class="form-control" placeholder="Digite o e-mail do contato" />
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+    </div>
 
-    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label for="telefone">Telefone</label>
+        <input type="tel" id="telefone" asp-for="Telefone" class="form-control" placeholder="Digite o telefone do contato" />
+        @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
+    </div>
 
-  <button type="submit" class="btn btn-primary btn-block">Gravar</button>
-  <a class="btn btn-secondary btn-block" asp-controller="Contato" asp-action="Index" role="button">Cancelar</a>
+    <button type="submit" class="btn btn-primary btn-block">Gravar</button>
+    <a class="btn btn-secondary btn-block" asp-controller="Contato" asp-action="Index" role="button">Cancelar</a>
 </form>
