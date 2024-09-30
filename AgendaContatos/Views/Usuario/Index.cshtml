@@ -3,6 +3,22 @@
 	ViewData["Title"] = "Listagem de Usuários";
 }
 
+<!-- Inclua o jQuery -->
+<script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Inclua o DataTables -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+<!-- Inclua o Bootstrap -->
+<script type="text/javascript" charset="utf8" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+
+<!-- Inclua jQuery Validation -->
+<script type="text/javascript" charset="utf8" src="~/js/jquery.validate.min.js"></script>
+<script type="text/javascript" charset="utf8" src="~/js/jquery.validate.unobtrusive.min.js"></script>
+
 <div class="text-center">
 	<div class="d-grid gap-2 d-md-flex justify-content-md-start">
 		<a class="btn btn-primary" role="button" asp-controller="Usuario" asp-action="Cadastrar">Novo usuário</a>
@@ -11,17 +27,17 @@
 
 	@if (TempData["MensagemSucesso"] != null)
 	{
-		<div class="alert alert-success" role="alert">
-			<button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+		<div class="alert alert-success alert-dismissible fade show" role="alert">
 			@TempData["MensagemSucesso"]
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 		</div>
 	}
 
 	@if (TempData["MensagemErro"] != null)
 	{
-		<div class="alert alert-danger" role="alert">
-			<button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+		<div class="alert alert-danger alert-dismissible fade show" role="alert">
 			@TempData["MensagemErro"]
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 		</div>
 	}
 
@@ -29,15 +45,16 @@
 
 	<h1 class="display-4">Listagem de Usuários</h1>
 
-	<table id="table-usuarios" class="display" style="width:100%">
+	<table id="table-usuarios" class="table table-striped table-hover" style="width:100%">
 		<thead>
 			<tr>
-				<th style="text-align: right;" scope="col">#</th>
-				<th style="text-align: left;" scope="col">Nome</th>
-				<th style="text-align: left;" scope="col">Login</th>
-				<th style="text-align: left;" scope="col">E-mail</th>
-				<th style="text-align: left;" scope="col">Perfil</th>
-				<th style="text-align: center;" scope="col">Data de cadastro</th>
+				<th scope="col">#</th>
+				<th scope="col">Nome</th>
+				<th scope="col">Login</th>
+				<th scope="col">E-mail</th>
+				<th scope="col">Perfil</th>
+				<th scope="col">Total de Contatos</th>
+				<th scope="col">Data de cadastro</th>
 				<th scope="col"></th>
 			</tr>
 		</thead>
@@ -48,18 +65,21 @@
 				foreach (var usuario in Model)
 				{
 					<tr>
-						<th style="text-align: right;" scope="row">@usuario.Id</th>
-						<td style="text-align: left;">@usuario.Nome</td>
-						<td style="text-align: left;">@usuario.Login</td>
-						<td style="text-align: left;">@usuario.Email</td>
-						<td style="text-align: left;">@(usuario.Perfil == AgendaContatos.Enums.PerfilEnum.Admin ? "Administrador" : "Padrão")</td>
+						<th scope="row">@usuario.Id</th>
+						<td>@usuario.Nome</td>
+						<td>@usuario.Login</td>
+						<td>@usuario.Email</td>
+						<td>@(usuario.Perfil == AgendaContatos.Enums.PerfilEnum.Admin ? "Administrador" : "Padrão")</td>
+						<td>
+							<a href="javascript:" class="btn btn-success btn-sm btn-total-contatos">
+								@(usuario.Contatos != null && usuario.Contatos.Any() ? usuario.Contatos.Count() : 0)
+							</a>
+						</td>
 						<td style="text-align: center;">@usuario.DataCadastro</td>
 						<td>
 							<div class="btn-group" role="group">
-								<a role="button" class="btn btn-primary" asp-controller="Usuario" asp-action="Editar"
-									asp-route-id="@usuario.Id">Editar</a>
-								<a role="button" class="btn btn-danger" asp-controller="Usuario" asp-action="DeletarRegistro"
-									asp-route-id="@usuario.Id">Excluir</a>
+								<a role="button" class="btn btn-primary" asp-controller="Usuario" asp-action="Editar" asp-route-id="@usuario.Id">Editar</a>
+								<a role="button" class="btn btn-danger" asp-controller="Usuario" asp-action="DeletarRegistro" asp-route-id="@usuario.Id">Excluir</a>
 							</div>
 						</td>
 					</tr>
@@ -67,4 +87,41 @@
 			}
 		</tbody>
 	</table>
+
+	<!-- Modal -->
+	<div id="modalContatosUsuario" class="modal" tabindex="-1">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Listagem de contatos</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<table id="table-contatos" class="display" style="width:100%">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Nome</th>
+								<th scope="col">E-mail</th>
+								<th scope="col">Telefone</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">1</th>
+								<td>Teste</td>
+								<td>Teste</td>
+								<td>Teste</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+
+
+

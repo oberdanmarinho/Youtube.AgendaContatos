@@ -1,5 +1,6 @@
 using AgendaContatos.Data;
 using AgendaContatos.Models;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace AgendaContatos.Repositorio
@@ -30,7 +31,9 @@ namespace AgendaContatos.Repositorio
 
 		public List<UsuarioModel> BuscarTodos()
 		{
-			return _context.Usuarios.ToList();
+			return _context.Usuarios
+				.Include(x => x.Contatos)
+				.ToList();
 		}
 
 		public UsuarioModel Adicionar(UsuarioModel usuario)
