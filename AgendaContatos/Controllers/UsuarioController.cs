@@ -9,10 +9,12 @@ namespace AgendaContatos.Controllers;
 public class UsuarioController : Controller
 {
 	private readonly IUsuarioRepositorio _usuarioRepositorio;
+	private readonly IContatoRepositorio _contatoRepositorio;
 
-	public UsuarioController(IUsuarioRepositorio usuarioRepositorio)
+	public UsuarioController(IUsuarioRepositorio usuarioRepositorio, IContatoRepositorio contatorepositorio)
 	{
 		_usuarioRepositorio = usuarioRepositorio;
+		_contatoRepositorio = contatorepositorio;
 	}
 
 	public IActionResult Index()
@@ -61,6 +63,12 @@ public class UsuarioController : Controller
 			TempData["MensagemErro"] = $"Erro ao excluir usuário: {erro.Message}";
 			return RedirectToAction("Index");
 		}
+	}
+
+	public IActionResult ListarContatosPorUsuarioId(int id)
+	{
+		List<ContatoModel> contatos = _contatoRepositorio.BuscarTodos(id);
+		return PartialView("_ContatosUsuario", contatos);
 	}
 
 	[HttpPost]
