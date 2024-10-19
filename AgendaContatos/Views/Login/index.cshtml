@@ -4,7 +4,7 @@
   ViewData["Title"] = "OMEGA [ORM]";
 }
 
-<div class="container mt-5">
+@* <div class="container mt-5">
   <h2 class="text-center mb-4">OMEGA</h2>
 
   @if (TempData["MensagemErro"] != null)
@@ -41,13 +41,42 @@
       @Html.ValidationMessageFor(x => x.Senha, "", new { @class = "text-danger" })
     </div>
 
-    <p class="mb-4 text-center">
-      Esqueceu sua senha?
-      <a asp-action="RedefinirSenha" asp-controller="Login" class="text-primary fw-bold">Redefinir minha senha</a>
-    </p>
-
     <button type="submit" class="btn btn-primary btn-lg btn-block" style="width: 100%">Entrar</button>
     <div class="d-grid gap-2">
     </div>
+
+    <p class="mb-4 text-center">
+      Esqueceu sua senha?
+      <a asp-action="RedefinirSenha" asp-controller="Login" class="text-primary fw-bold">Redefinir senha</a>
+    </p>
   </form>
+</div> *@
+
+
+<div class="container-fluid vh-100 d-flex">
+    <!-- Coluna da Imagem -->
+    <div class="col-6 d-flex align-items-center justify-content-center bg-light">
+        <img src="../../img/login.jpg" alt="Sistema de Gestão" class="img-fluid" style="max-width: 80%;">
+    </div>
+
+    <!-- Coluna do Formulário -->
+    <div class="col-6 d-flex align-items-center justify-content-center">
+        <div class="w-75">
+            <!-- Título OMEGA alinhado à esquerda -->
+            <h2 class="mb-4">OMEGA</h2>
+
+            <!-- Formulário -->
+            <form asp-controller="Login" asp-action="Entrar" method="post">
+                <div class="mb-3">
+                    <input type="text" asp-for="Login" class="form-control" placeholder="Login" required>
+                </div>
+
+                <div class="mb-3">
+                    <input type="password" asp-for="Senha" class="form-control" placeholder="Senha" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Entrar</button>
+            </form>
+        </div>
+    </div>
 </div>
