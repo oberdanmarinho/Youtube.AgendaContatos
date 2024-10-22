@@ -1,82 +1,74 @@
 @model LoginModel
 @{
-  Layout = "_LayoutDeslogado";
-  ViewData["Title"] = "OMEGA [ORM]";
+	Layout = "_LayoutDeslogado";
+	ViewData["Title"] = "OMEGA [ORM]";
 }
 
-@* <div class="container mt-5">
-  <h2 class="text-center mb-4">OMEGA</h2>
+<div class="d-flex align-items-center justify-content-center" style="min-height: 80vh;">
+	<div class="container-login">
+		<div class="img-box">
+			<img src="~/img/login.svg">
+		</div>
+		<div class="content-box">
+			<div class="form-box">
+				<h2>Login</h2>
+				@if (TempData["MensagemErro"] != null)
+				{
+					<div class="alert alert-danger alert-dismissible fade show" role="alert">
+						<button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						@TempData["MensagemErro"]
+					</div>
+				}
 
-  @if (TempData["MensagemErro"] != null)
-  {
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      @TempData["MensagemErro"]
-    </div>
-  }
+				@if (TempData["MensagemSucesso"] != null)
+				{
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						@TempData["MensagemSucesso"]
+					</div>
+				}
 
+				<form asp-controller="Login" asp-action="Entrar" method="post">
+					<div class="input-box">
+						<span for="login">UserName</span>
+						<input type="text" asp-for="Login" placeholder="mail.com" id="login" required>
+						@Html.ValidationMessageFor(x => x.Login, "", new { @class = "text-danger" })
+					</div>
 
-  @if (TempData["MensagemSucesso"] != null)
-  {
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      @TempData["MensagemSucesso"]
-    </div>
-  }
+					<div class="input-box">
+						<span for="senha">Password</span>
+						<input type="password" asp-for="Senha" id="senha" placeholder="password" required>
+						@Html.ValidationMessageFor(x => x.Senha, "", new { @class = "text-danger" })
+					</div>
 
-  <form asp-controller="Login" asp-action="Entrar" method="post">
-    <div class="mb-3">
-      <label for="login" class="form-label">Login</label>
-      <input type="text" asp-for="Login" class="form-control" id="login" placeholder="Digite seu login" required>
-      @Html.ValidationMessageFor(x => x.Login, "", new { @class = "text-danger" })
-    </div>
+					<div class="remember">
+						<label>
+							<input type="checkbox"> Remember me
+						</label>
+						<a asp-action="RedefinirSenha" asp-controller="Login">Esqueceu a Senha?</a>
+					</div>
 
-    <div class="mb-3">
-      <label for="senha" class="form-label">Senha</label>
-      <input type="password" asp-for="Senha" class="form-control" id="senha" placeholder="Digite sua senha" required>
-      @Html.ValidationMessageFor(x => x.Senha, "", new { @class = "text-danger" })
-    </div>
+					<div class="input-box">
+						<input type="submit" value="Entrar">
+					</div>
 
-    <button type="submit" class="btn btn-primary btn-lg btn-block" style="width: 100%">Entrar</button>
-    <div class="d-grid gap-2">
-    </div>
+					<div class="input-box">
+						<p>N�o Tem Uma Conta? <a href="">Inscrever-se</a></p>
+					</div>
+				</form>
 
-    <p class="mb-4 text-center">
-      Esqueceu sua senha?
-      <a asp-action="RedefinirSenha" asp-controller="Login" class="text-primary fw-bold">Redefinir senha</a>
-    </p>
-  </form>
-</div> *@
+				<h3>Logar Com </h3>
 
-
-<div class="container-fluid vh-100 d-flex">
-    <!-- Coluna da Imagem -->
-    <div class="col-6 d-flex align-items-center justify-content-center bg-light">
-        <img src="~/img/login.jpg" alt="Sistema de Gestão" class="img-fluid" style="max-width: 80%;">
-    </div>
-
-    <!-- Coluna do Formulário -->
-    <div class="col-6 d-flex align-items-center justify-content-center">
-        <div class="w-75">
-            <!-- Título OMEGA alinhado à esquerda -->
-            <h2 class="mb-4">OMEGA</h2>
-
-            <!-- Formulário -->
-            <form asp-controller="Login" asp-action="Entrar" method="post">
-                <div class="mb-3">
-                    <input type="text" asp-for="Login" class="form-control" placeholder="Login" required>
-                </div>
-
-                <div class="mb-3">
-                    <input type="password" asp-for="Senha" class="form-control" placeholder="Senha" required>
-                </div>
-
-                <button type="submit" class="btn btn-primary w-100">Entrar</button>
-            </form>
-        </div>
-    </div>
+				<ul class="ul">
+					<li><img src="~/img/facebook.png"></li>
+					<li><img src="~/img/google.png"></li>
+					<li><img src="~/img/apple.png"></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </div>
