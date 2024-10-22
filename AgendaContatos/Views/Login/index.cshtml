@@ -1,41 +1,74 @@
 @model LoginModel
 @{
-  Layout = "_LayoutDeslogado";
-  ViewData["Title"] = "Login";
+	Layout = "_LayoutDeslogado";
+	ViewData["Title"] = "OMEGA [ORM]";
 }
 
-@if (TempData["MensagemErro"] != null)
-{
-  <div class="alert alert-danger" role="alert">
-    <button type="button" class="btn btn-danger btn-sm close-alert" data-bs-dismiss="alert" arial-label="Close">X</button>
-    @TempData["MensagemErro"]
-  </div>
-}
+<div class="d-flex align-items-center justify-content-center" style="min-height: 80vh;">
+	<div class="container-login">
+		<div class="img-box">
+			<img src="~/img/login.svg">
+		</div>
+		<div class="content-box">
+			<div class="form-box">
+				<h2>Login</h2>
+				@if (TempData["MensagemErro"] != null)
+				{
+					<div class="alert alert-danger alert-dismissible fade show" role="alert">
+						<button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						@TempData["MensagemErro"]
+					</div>
+				}
 
-@if (TempData["MensagemSucesso"] != null)
-{
-  <div class="alert alert-success" role="alert">
-    <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
-    @TempData["MensagemSucesso"]
-  </div>
-}
+				@if (TempData["MensagemSucesso"] != null)
+				{
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						@TempData["MensagemSucesso"]
+					</div>
+				}
 
-<form asp-controller="Login" asp-action="Entrar" method="post">
-  <div class="mb-3">
-    <label for="login" class="form-label">Login</label>
-    <input type="text" asp-for="Login" class="form-control" id="login">
-    @Html.ValidationMessageFor(x => x.Login)
-  </div>
-  <div class="mb-3">
-    <label for="senha" class="form-label">Senha</label>
-    <input type="password" asp-for="Senha" class="form-control" id="senha">
-    @Html.ValidationMessageFor(x => x.Senha)
-  </div>
+				<form asp-controller="Login" asp-action="Entrar" method="post">
+					<div class="input-box">
+						<span for="login">UserName</span>
+						<input type="text" asp-for="Login" placeholder="mail.com" id="login" required>
+						@Html.ValidationMessageFor(x => x.Login, "", new { @class = "text-danger" })
+					</div>
 
-  <p class="mb-4 text-sm mx-auto">
-    Esqueceu sua senha?
-    <a asp-action="RedefinirSenha" asp-asp-controller="Login"
-      class="text-primary text-gradient font-weight-bold">Redefinir minha senha</a>
-  </p>
-  <button type="submit" class="btn btn-primary btn-lg btn-block">Entrar</button>
-</form>
+					<div class="input-box">
+						<span for="senha">Password</span>
+						<input type="password" asp-for="Senha" id="senha" placeholder="password" required>
+						@Html.ValidationMessageFor(x => x.Senha, "", new { @class = "text-danger" })
+					</div>
+
+					<div class="remember">
+						<label>
+							<input type="checkbox"> Remember me
+						</label>
+						<a asp-action="RedefinirSenha" asp-controller="Login">Esqueceu a Senha?</a>
+					</div>
+
+					<div class="input-box">
+						<input type="submit" value="Entrar">
+					</div>
+
+					<div class="input-box">
+						<p>Não Tem Uma Conta? <a href="">Inscrever-se</a></p>
+					</div>
+				</form>
+
+				<h3>Logar Com </h3>
+
+				<ul class="ul">
+					<li><img src="~/img/facebook.png"></li>
+					<li><img src="~/img/google.png"></li>
+					<li><img src="~/img/apple.png"></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

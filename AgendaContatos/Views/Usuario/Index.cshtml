@@ -40,7 +40,6 @@
   }
 
   <br />
-
   <h1 class="display-4">Listagem de Usuários</h1>
 
   <table id="table-usuarios" class="table table-striped table-hover" style="width:100%">
@@ -68,7 +67,7 @@
             <td>@usuario.Email</td>
             <td>@(usuario.Perfil == AgendaContatos.Enums.PerfilEnum.Admin ? "Administrador" : "Padrão")</td>
             <td>
-              <a href="javascript:" usuario-id="@usuario.Id" class="btn btn-success btn-sm btn-total-contatos">
+              <a href="javascript:void(0)" usuario-id="@usuario.Id" class="btn btn-success btn-sm btn-total-contatos">
                 @(usuario.Contatos != null && usuario.Contatos.Any() ? usuario.Contatos.Count() : 0)
               </a>
             </td>
@@ -107,5 +106,4 @@
       </div>
     </div>
   </div>
-
 </div>
